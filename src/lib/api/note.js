@@ -1,6 +1,8 @@
 export async function getNotes() {
   try {
-    const response = await fetch("http://localhost:5000/note");
+    const response = await fetch(
+      "https://google-keep-backend-production.up.railway.app/note"
+    );
 
     const result = await response.json();
 
@@ -16,11 +18,14 @@ export async function getNotes() {
 
 export async function CreateNote(noteData) {
   try {
-    const response = await fetch("http://localhost:5000/note/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(noteData),
-    });
+    const response = await fetch(
+      "https://google-keep-backend-production.up.railway.app/note/create",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(noteData),
+      }
+    );
     const data = await response.json();
 
     if (!response.ok) {
@@ -35,9 +40,12 @@ export async function CreateNote(noteData) {
 
 export async function deleteNote(id) {
   try {
-    const response = await fetch(`http://localhost:5000/note/delete/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://google-keep-backend-production.up.railway.app/note/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await response.json();
 
     if (!response.ok) {
